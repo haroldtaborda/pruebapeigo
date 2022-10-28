@@ -1,0 +1,28 @@
+{
+  "pruebapeigoApp": {
+    "operacion": {
+      "home": {
+        "title": "Operaciones",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Operacion",
+        "createOrEditLabel": "Create or edit a Operacion",
+        "notFound": "No Operacions found"
+      },
+      "created": "{{ param }}",
+      "updated": "{{ param }}",
+      "deleted": "A Operacion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Operacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Operación"
+      },
+      "id": "ID",
+      "numeroOperacion": "Numero Operacion",
+      "monto": "Monto",
+      "cuentaOrigen": "Cuenta Origen",
+      "cuentaDestino": "Cuenta Destino",
+      "auditoria": "Auditoria"
+    }
+  }
+}

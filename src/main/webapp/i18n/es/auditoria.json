@@ -1,0 +1,29 @@
+{
+  "pruebapeigoApp": {
+    "auditoria": {
+      "home": {
+        "title": "Auditorias",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nueva Auditoria",
+        "createOrEditLabel": "Crear o editar Auditoria",
+        "notFound": "Ningún Auditorias encontrado"
+      },
+      "created": "Un nuevo Auditoria ha sido creado con el identificador {{ param }}",
+      "updated": "Un Auditoria ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Auditoria ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Auditoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Auditoria"
+      },
+      "id": "ID",
+      "usuarioCreacion": "Usuario Creacion",
+      "fechaCreacion": "Fecha Creacion",
+      "usuarioModificacion": "Usuario Modificacion",
+      "fechaModificacion": "Fecha Modificacion",
+      "request": "Request",
+      "response": "Response"
+    }
+  }
+}

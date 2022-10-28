@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cuenta">
+      <h2 data-cy="cuentaDetailsHeading"><span jhiTranslate="pruebapeigoApp.cuenta.detail.title">Cuenta</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cuenta.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebapeigoApp.cuenta.numeroCuenta">Numero Cuenta</span></dt>
+        <dd>
+          <span>{{ cuenta.numeroCuenta }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebapeigoApp.cuenta.saldo">Saldo</span></dt>
+        <dd>
+          <span>{{ cuenta.saldo }}</span>
+        </dd>
+        <dt><span jhiTranslate="pruebapeigoApp.cuenta.tipoCuenta">Tipo Cuenta</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pruebapeigoApp.TipoCuenta.' + cuenta.tipoCuenta }}">{{ cuenta.tipoCuenta }}</span>
+        </dd>
+       
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cuenta', cuenta.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

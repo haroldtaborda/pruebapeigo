@@ -1,0 +1,27 @@
+{
+  "pruebapeigoApp": {
+    "cuenta": {
+      "home": {
+        "title": "Cuentas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear cuenta",
+        "createOrEditLabel": "Crear o editar Cuenta",
+        "notFound": "Ningún Cuentas encontrado"
+      },
+      "created": "Un nuevo Cuenta ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cuenta ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cuenta ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cuenta {{ id }}?"
+      },
+      "detail": {
+        "title": "Cuenta"
+      },
+      "id": "ID",
+      "numeroCuenta": "Numero Cuenta",
+      "saldo": "Saldo",
+      "tipoCuenta": "Tipo Cuenta",
+      "auditoria": "Auditoria"
+    }
+  }
+}

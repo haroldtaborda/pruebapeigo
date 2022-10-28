@@ -1,0 +1,56 @@
+<div>
+  <h2 id="page-heading" data-cy="OperacionHeading">
+    <span jhiTranslate="pruebapeigoApp.operacion.home.title">Operacions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="pruebapeigoApp.operacion.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-operacion"
+        [routerLink]="['/operacion/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pruebapeigoApp.operacion.home.createLabel"> Create a new Operacion </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="operacions?.length === 0">
+    <span jhiTranslate="pruebapeigoApp.operacion.home.notFound">No operacions found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="operacions && operacions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="pruebapeigoApp.operacion.numeroOperacion">Numero Operacion</span></th>
+          <th scope="col"><span jhiTranslate="pruebapeigoApp.operacion.monto">Monto</span></th>
+          <th scope="col"><span jhiTranslate="pruebapeigoApp.operacion.cuentaOrigen">Cuenta Origen</span></th>
+          <th scope="col"><span jhiTranslate="pruebapeigoApp.operacion.cuentaDestino">Cuenta Destino</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let operacion of operacions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/operacion', operacion.id, 'view']">{{ operacion.id }}</a>
+          </td>
+          <td>{{ operacion.numeroOperacion }}</td>
+          <td>{{ operacion.monto }}</td>
+          <td>{{ operacion.cuentaOrigen }}</td>
+          <td>{{ operacion.cuentaDestino }}</td>
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

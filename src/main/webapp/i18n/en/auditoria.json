@@ -1,0 +1,29 @@
+{
+  "pruebapeigoApp": {
+    "auditoria": {
+      "home": {
+        "title": "Auditorias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Auditoria",
+        "createOrEditLabel": "Create or edit a Auditoria",
+        "notFound": "No Auditorias found"
+      },
+      "created": "A new Auditoria is created with identifier {{ param }}",
+      "updated": "A Auditoria is updated with identifier {{ param }}",
+      "deleted": "A Auditoria is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Auditoria {{ id }}?"
+      },
+      "detail": {
+        "title": "Auditoria"
+      },
+      "id": "ID",
+      "usuarioCreacion": "Usuario Creacion",
+      "fechaCreacion": "Fecha Creacion",
+      "usuarioModificacion": "Usuario Modificacion",
+      "fechaModificacion": "Fecha Modificacion",
+      "request": "Request",
+      "response": "Response"
+    }
+  }
+}

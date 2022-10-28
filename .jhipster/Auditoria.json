@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20221027145917",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "auditoria",
+  "fields": [
+    {
+      "fieldName": "usuarioCreacion",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "fechaCreacion",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "usuarioModificacion",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "fechaModificacion",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "request",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "response",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Auditoria",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

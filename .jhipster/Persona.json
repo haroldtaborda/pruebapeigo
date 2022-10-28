@@ -1,0 +1,59 @@
+{
+  "applications": "*",
+  "changelogDate": "20221027145915",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "persona",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tipoDocumento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroDocumento",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Persona",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "cuenta",
+      "otherEntityRelationshipName": "persona",
+      "ownerSide": true,
+      "relationshipName": "cuenta",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "auditoria",
+      "otherEntityRelationshipName": "persona",
+      "ownerSide": true,
+      "relationshipName": "auditoria",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

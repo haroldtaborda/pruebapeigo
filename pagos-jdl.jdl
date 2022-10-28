@@ -1,0 +1,48 @@
+
+entity Persona{
+	nombre String
+    apellidos String
+    tipoDocumento String
+    numeroDocumento String
+    email String
+    telefono String
+    direccion String
+}
+
+entity Cuenta {
+	numeroCuenta String
+    saldo Double
+    tipoCuenta TipoCuenta
+}
+
+entity Auditoria{
+	usuarioCreacion Long
+    fechaCreacion Instant
+    usuarioModificacion Long
+    fechaModificacion Instant
+    request String
+    response String
+}
+
+entity Operacion{
+	numeroOperacion String
+    monto Double
+    cuentaOrigen Long
+    cuentaDestino Long
+}
+
+relationship OneToOne{
+	Persona{cuenta} to Cuenta
+    Operacion{auditoria} to Auditoria
+    Persona{auditoria} to Auditoria
+    Cuenta{auditoria} to Auditoria
+} 
+
+enum TipoCuenta{
+	AHORROS, CORRIENTE
+}
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+service all with serviceImpl

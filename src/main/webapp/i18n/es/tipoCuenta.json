@@ -1,0 +1,9 @@
+{
+  "pruebapeigoApp": {
+    "TipoCuenta": {
+      "null": "",
+      "AHORROS": "AHORROS",
+      "CORRIENTE": "CORRIENTE"
+    }
+  }
+}

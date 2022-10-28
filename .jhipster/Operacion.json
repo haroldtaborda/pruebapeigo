@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20221027145918",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "operacion",
+  "fields": [
+    {
+      "fieldName": "numeroOperacion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "cuentaOrigen",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cuentaDestino",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Operacion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "auditoria",
+      "otherEntityRelationshipName": "operacion",
+      "ownerSide": true,
+      "relationshipName": "auditoria",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

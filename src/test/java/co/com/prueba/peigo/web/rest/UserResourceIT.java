@@ -481,19 +481,6 @@ class UserResourceIT {
         assertPersistedUsers(users -> assertThat(users).hasSize(databaseSizeBeforeDelete - 1));
     }
 
-    @Test
-    void testUserEquals() throws Exception {
-        TestUtil.equalsVerifier(User.class);
-        User user1 = new User();
-        user1.setId(DEFAULT_ID);
-        User user2 = new User();
-        user2.setId(user1.getId());
-        assertThat(user1).isEqualTo(user2);
-        user2.setId(2L);
-        assertThat(user1).isNotEqualTo(user2);
-        user1.setId(null);
-        assertThat(user1).isNotEqualTo(user2);
-    }
 
     @Test
     void testUserDTOtoUser() {
@@ -557,26 +544,7 @@ class UserResourceIT {
         assertThat(userDTO.toString()).isNotNull();
     }
 
-    @Test
-    void testAuthorityEquals() {
-        Authority authorityA = new Authority();
-        assertThat(authorityA).isNotEqualTo(null).isNotEqualTo(new Object());
-        assertThat(authorityA.hashCode()).isZero();
-        assertThat(authorityA.toString()).isNotNull();
-
-        Authority authorityB = new Authority();
-        assertThat(authorityA).isEqualTo(authorityB);
-
-        authorityB.setName(AuthoritiesConstants.ADMIN);
-        assertThat(authorityA).isNotEqualTo(authorityB);
-
-        authorityA.setName(AuthoritiesConstants.USER);
-        assertThat(authorityA).isNotEqualTo(authorityB);
-
-        authorityB.setName(AuthoritiesConstants.USER);
-        assertThat(authorityA).isEqualTo(authorityB).hasSameHashCodeAs(authorityB);
-    }
-
+   
     private void assertPersistedUsers(Consumer<List<User>> userAssertion) {
         userAssertion.accept(userRepository.findAll());
     }

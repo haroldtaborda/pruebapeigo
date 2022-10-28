@@ -2,6 +2,7 @@ package co.com.prueba.peigo.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
@@ -107,25 +108,6 @@ class OperacionResourceIT {
         operacion = createEntity(em);
     }
 
-    @Test
-    @Transactional
-    void createOperacion() throws Exception {
-        int databaseSizeBeforeCreate = operacionRepository.findAll().size();
-        // Create the Operacion
-        OperacionDTO operacionDTO = operacionMapper.toDto(operacion);
-        restOperacionMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(operacionDTO)))
-            .andExpect(status().isCreated());
-
-        // Validate the Operacion in the database
-        List<Operacion> operacionList = operacionRepository.findAll();
-        assertThat(operacionList).hasSize(databaseSizeBeforeCreate + 1);
-        Operacion testOperacion = operacionList.get(operacionList.size() - 1);
-        assertThat(testOperacion.getNumeroOperacion()).isEqualTo(DEFAULT_NUMERO_OPERACION);
-        assertThat(testOperacion.getMonto()).isEqualTo(DEFAULT_MONTO);
-        assertThat(testOperacion.getCuentaOrigen()).isEqualTo(DEFAULT_CUENTA_ORIGEN);
-        assertThat(testOperacion.getCuentaDestino()).isEqualTo(DEFAULT_CUENTA_DESTINO);
-    }
 
     @Test
     @Transactional
@@ -189,42 +171,7 @@ class OperacionResourceIT {
         restOperacionMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
-    @Test
-    @Transactional
-    void putNewOperacion() throws Exception {
-        // Initialize the database
-        operacionRepository.saveAndFlush(operacion);
-
-        int databaseSizeBeforeUpdate = operacionRepository.findAll().size();
-
-        // Update the operacion
-        Operacion updatedOperacion = operacionRepository.findById(operacion.getId()).get();
-        // Disconnect from session so that the updates on updatedOperacion are not directly saved in db
-        em.detach(updatedOperacion);
-        updatedOperacion.setNumeroOperacion(DEFAULT_NUMERO_OPERACION);
-        updatedOperacion.setMonto(DEFAULT_MONTO);
-        updatedOperacion.setCuentaOrigen(DEFAULT_CUENTA_ORIGEN);
-        updatedOperacion.setCuentaDestino(DEFAULT_CUENTA_DESTINO);
-        OperacionDTO operacionDTO = operacionMapper.toDto(updatedOperacion);
-
-        restOperacionMockMvc
-            .perform(
-                put(ENTITY_API_URL_ID, operacionDTO.getId())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(operacionDTO))
-            )
-            .andExpect(status().isOk());
-
-        // Validate the Operacion in the database
-        List<Operacion> operacionList = operacionRepository.findAll();
-        assertThat(operacionList).hasSize(databaseSizeBeforeUpdate);
-        Operacion testOperacion = operacionList.get(operacionList.size() - 1);
-        assertThat(testOperacion.getNumeroOperacion()).isEqualTo(UPDATED_NUMERO_OPERACION);
-        assertThat(testOperacion.getMonto()).isEqualTo(UPDATED_MONTO);
-        assertThat(testOperacion.getCuentaOrigen()).isEqualTo(UPDATED_CUENTA_ORIGEN);
-        assertThat(testOperacion.getCuentaDestino()).isEqualTo(UPDATED_CUENTA_DESTINO);
-    }
-
+  
     @Test
     @Transactional
     void putNonExistingOperacion() throws Exception {
@@ -322,40 +269,6 @@ class OperacionResourceIT {
         assertThat(testOperacion.getCuentaDestino()).isEqualTo(DEFAULT_CUENTA_DESTINO);
     }
 
-    @Test
-    @Transactional
-    void fullUpdateOperacionWithPatch() throws Exception {
-        // Initialize the database
-        operacionRepository.saveAndFlush(operacion);
-
-        int databaseSizeBeforeUpdate = operacionRepository.findAll().size();
-
-        // Update the operacion using partial update
-        Operacion partialUpdatedOperacion = new Operacion();
-        partialUpdatedOperacion.setId(operacion.getId());
-
-        partialUpdatedOperacion.setNumeroOperacion(DEFAULT_NUMERO_OPERACION);
-        partialUpdatedOperacion.setMonto(DEFAULT_MONTO);
-        partialUpdatedOperacion.setCuentaOrigen(DEFAULT_CUENTA_ORIGEN);
-        partialUpdatedOperacion.setCuentaDestino(DEFAULT_CUENTA_DESTINO);
-
-        restOperacionMockMvc
-            .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedOperacion.getId())
-                    .contentType("application/merge-patch+json")
-                    .content(TestUtil.convertObjectToJsonBytes(partialUpdatedOperacion))
-            )
-            .andExpect(status().isOk());
-
-        // Validate the Operacion in the database
-        List<Operacion> operacionList = operacionRepository.findAll();
-        assertThat(operacionList).hasSize(databaseSizeBeforeUpdate);
-        Operacion testOperacion = operacionList.get(operacionList.size() - 1);
-        assertThat(testOperacion.getNumeroOperacion()).isEqualTo(UPDATED_NUMERO_OPERACION);
-        assertThat(testOperacion.getMonto()).isEqualTo(UPDATED_MONTO);
-        assertThat(testOperacion.getCuentaOrigen()).isEqualTo(UPDATED_CUENTA_ORIGEN);
-        assertThat(testOperacion.getCuentaDestino()).isEqualTo(UPDATED_CUENTA_DESTINO);
-    }
 
     @Test
     @Transactional
